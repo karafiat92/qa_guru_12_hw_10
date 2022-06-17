@@ -14,7 +14,6 @@ public enum MonthsEnum {
     NOV("November"),
     DEC("December");
     public final String rusName;
-
     MonthsEnum(String rusName) {
         this.rusName = rusName;
     }
