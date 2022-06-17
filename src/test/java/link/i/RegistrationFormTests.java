@@ -1,7 +1,9 @@
 package link.i;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.selenide.AllureSelenide;
 import link.i.pages.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -38,6 +40,7 @@ public class RegistrationFormTests {
     @Test
     @DisplayName("Регистрация с позитивными рандомными данными")
     void positiveValuesRegistrationForm() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         regForm.openPage();
 //        инициализация переменных, для последующей работы с тестом
         String subject = regForm.getRandomSubject("o");
