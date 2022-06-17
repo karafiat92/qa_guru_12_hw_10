@@ -7,10 +7,12 @@ import io.qameta.allure.selenide.AllureSelenide;
 import link.i.pages.RegistrationFormPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
+@Tag("linki")
 public class RegistrationFormTests {
     RegistrationFormPage regForm = new RegistrationFormPage();
     Faker faker = new Faker();
@@ -36,7 +38,7 @@ public class RegistrationFormTests {
 
     @BeforeAll
     static void setUp() {
-        step("Задание конфигураций", ()->{
+        step("Задание конфигураций", () -> {
             Configuration.baseUrl = "https://demoqa.com";
             Configuration.browserSize = "1500x1080";
             Configuration.holdBrowserOpen = false;
@@ -68,12 +70,12 @@ public class RegistrationFormTests {
         step("Подтверждение введённых данных", () -> {
             regForm.submitForm();
         });
-        step("Проверка корректности отображения введённых данных",()-> {
+        step("Проверка корректности отображения введённых данных", () -> {
             regForm.checkWindowExist()
                     .checkValueInTable("Student Name", (firstname + " " + lastname))
                     .checkValueInTable("Student Email", userEmail)
                     .checkValueInTable("Gender", gender)
-                    .checkValueInTable("Mobile", phoneNumber.substring(0,10))
+                    .checkValueInTable("Mobile", phoneNumber.substring(0, 10))
                     .checkValueInTable("Date of Birth", (day + " " + month + "," + year))
                     .checkValueInTable("Subjects", subject)
                     .checkValueInTable("Hobbies", hobby)
@@ -81,8 +83,8 @@ public class RegistrationFormTests {
                     .checkValueInTable("Address", currentAddress)
                     .checkValueInTable("State and City", (state + " " + cityValue));
         });
-       step("Закрытие формы",()-> {
-           regForm.closeForm();
-       });
+        step("Закрытие формы", () -> {
+            regForm.closeForm();
+        });
     }
 }
