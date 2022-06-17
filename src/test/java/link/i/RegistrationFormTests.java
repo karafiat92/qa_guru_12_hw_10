@@ -37,7 +37,6 @@ public class RegistrationFormTests extends TestBase {
     @Test
     @DisplayName("Регистрация с позитивными рандомными данными")
     void positiveValuesRegistrationForm() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открытие формы", () -> {
             regForm.openPage();
         });
