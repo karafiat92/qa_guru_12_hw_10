@@ -1,11 +1,9 @@
 package link.i;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
 import link.i.pages.RegistrationFormPage;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -13,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 
 @Tag("linki")
-public class RegistrationFormTests {
+public class RegistrationFormTests extends TestBase {
     RegistrationFormPage regForm = new RegistrationFormPage();
     Faker faker = new Faker();
     String firstname = faker.name().firstName(),
@@ -35,15 +33,6 @@ public class RegistrationFormTests {
             subject = "";
     Integer day = faker.number().numberBetween(1, 30),
             year = faker.number().numberBetween(1900, 2022);
-
-    @BeforeAll
-    static void setUp() {
-        step("Задание конфигураций", () -> {
-            Configuration.baseUrl = "https://demoqa.com";
-            Configuration.browserSize = "1500x1080";
-            Configuration.holdBrowserOpen = false;
-        });
-    }
 
     @Test
     @DisplayName("Регистрация с позитивными рандомными данными")
