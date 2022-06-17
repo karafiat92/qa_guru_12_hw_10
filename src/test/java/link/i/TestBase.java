@@ -13,7 +13,6 @@ public class TestBase {
         Configuration.browserSize = "1500x1280";
 //        Configuration.holdBrowserOpen = false;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
